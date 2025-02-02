@@ -1,7 +1,7 @@
 {
     "name": "naruto-storm-2-title-screen-react",
     "homepage": "https://Dejvi-Blushi.github.io/Naruto-Storm-2-DEMO/",
-    "private": true,
+    "private": false,
     "version": "1.0.0",
     "type": "module",
     "scripts": {
