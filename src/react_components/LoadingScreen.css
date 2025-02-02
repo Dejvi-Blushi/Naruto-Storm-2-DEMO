@@ -1,0 +1,151 @@
+.loading-container2 {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    font-size: 40px;
+    font-style: italic;
+}
+
+.loading-logo-container2 {
+    position: absolute;
+    right: 498px;
+    bottom: 130px;
+}
+
+.percentage-logo-container2 {
+    position: absolute;
+    right: 274px;
+    bottom: 130px;
+}
+
+.loading-logo-container2 span {
+    display: inline-block;
+}
+
+.loading-logo-container2 span:nth-child(1) {
+    animation: bounce-anim1 2.37s infinite;
+}
+
+@keyframes bounce-anim1 {
+    0% {
+        transform: translateY(0px);
+    }
+
+    7% {
+        transform: translateY(-6.5px);
+    }
+
+    14% {
+        transform: translateY(0px);
+    }
+}
+
+.loading-logo-container2 span:nth-child(3) {
+    animation: bounce-anim2 2.37s infinite;
+}
+
+@keyframes bounce-anim2 {
+    7% {
+        transform: translateY(0px);
+    }
+
+    14% {
+        transform: translateY(-6.5px);
+    }
+
+    21% {
+        transform: translateY(0px);
+    }
+}
+
+.loading-logo-container2 span:nth-child(5) {
+    animation: bounce-anim3 2.37s infinite;
+}
+
+@keyframes bounce-anim3 {
+    14% {
+        transform: translateY(0px);
+    }
+
+    21% {
+        transform: translateY(-6.5px);
+    }
+
+    28% {
+        transform: translateY(0px);
+    }
+}
+
+.loading-logo-container2 span:nth-child(7) {
+    animation: bounce-anim4 2.37s infinite;
+}
+
+@keyframes bounce-anim4 {
+    21% {
+        transform: translateY(0px);
+    }
+
+    28% {
+        transform: translateY(-6.5px);
+    }
+
+    35% {
+        transform: translateY(0px);
+    }
+}
+
+.loading-logo-container2 span:nth-child(9) {
+    animation: bounce-anim5 2.37s infinite;
+}
+
+@keyframes bounce-anim5 {
+    28% {
+        transform: translateY(0px);
+    }
+
+    35% {
+        transform: translateY(-6.5px);
+    }
+
+    42% {
+        transform: translateY(0px);
+    }
+}
+
+.loading-logo-container2 span:nth-child(11) {
+    animation: bounce-anim6 2.37s infinite;
+}
+
+@keyframes bounce-anim6 {
+    35% {
+        transform: translateY(0px);
+    }
+
+    42% {
+        transform: translateY(-6.5px);
+    }
+
+    49% {
+        transform: translateY(0px);
+    }
+}
+
+.loading-logo-container2 span:nth-child(13) {
+    animation: bounce-anim7 2.37s infinite;
+}
+
+@keyframes bounce-anim7 {
+    42% {
+        transform: translateY(0px);
+    }
+
+    49% {
+        transform: translateY(-6.5px);
+    }
+
+    56% {
+        transform: translateY(0px);
+    }
+}

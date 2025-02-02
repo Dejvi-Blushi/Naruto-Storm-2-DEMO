@@ -1,0 +1,43 @@
+.splash-logos-container4 {
+    width: 1920px;
+    height: 1080px;
+    animation: white-screen-splash4 500ms forwards;
+}
+
+@keyframes white-screen-splash4 {
+    100% {
+        background-color: white;
+    }
+}
+
+.logo-fade-in4 {
+    animation: logo-fade-in-anim4 500ms forwards;
+}
+
+@keyframes logo-fade-in-anim4 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.logo-stay4 {
+    opacity: 1;
+}
+
+.logo-fade-out4 {
+    animation: logo-fade-out-anim4 500ms forwards;
+}
+
+@keyframes logo-fade-out-anim4 {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

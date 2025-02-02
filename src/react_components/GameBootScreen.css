@@ -1,0 +1,15 @@
+.game-boot-screen1 {
+    width: 1920px;
+    height: 1080px;
+    animation: game-boot-screen-transition1 2.5s forwards;
+}
+
+@keyframes game-boot-screen-transition1 {
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
