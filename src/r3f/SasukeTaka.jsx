@@ -3,7 +3,9 @@ import {useGLTF, useAnimations, Outlines} from "@react-three/drei";
 
 function SasukeTaka(props) {
     const group = useRef();
-    const {nodes, materials, animations} = useGLTF("/2ssybod1.glb");
+    const {nodes, materials, animations} = useGLTF(
+        "/Naruto-Storm-2-DEMO/2ssybod1.glb"
+    );
     const {actions, names} = useAnimations(animations, group);
 
     useEffect(() => {
@@ -123,6 +125,6 @@ function SasukeTaka(props) {
     );
 }
 
-useGLTF.preload("/2ssybod1.glb");
+useGLTF.preload("/Naruto-Storm-2-DEMO/2ssybod1.glb");
 
 export default SasukeTaka;

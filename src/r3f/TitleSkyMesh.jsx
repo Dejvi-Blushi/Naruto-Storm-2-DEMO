@@ -3,7 +3,9 @@ import {useGLTF, PerspectiveCamera, useAnimations} from "@react-three/drei";
 
 function Sky(props) {
     const group = useRef();
-    const {nodes, materials, animations} = useGLTF("/mdsel00.glb");
+    const {nodes, materials, animations} = useGLTF(
+        "/Naruto-Storm-2-DEMO/mdsel00.glb"
+    );
     const {actions, names} = useAnimations(animations, group);
 
     useEffect(() => {
@@ -56,6 +58,6 @@ function Sky(props) {
     );
 }
 
-useGLTF.preload("/mdsel00.glb");
+useGLTF.preload("/Naruto-Storm-2-DEMO/mdsel00.glb");
 
 export default Sky;

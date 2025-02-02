@@ -21,7 +21,7 @@
 }
 
 .scene-fade-in5 {
-    animation: scene-fade-in5 520ms forwards;
+    animation: scene-fade-in5 1000ms forwards;
 }
 
 @keyframes scene-fade-in5 {

@@ -3,7 +3,9 @@ import {useGLTF, useAnimations, Outlines} from "@react-three/drei";
 
 function NarutoPTS(props) {
     const group = useRef();
-    const {nodes, materials, animations} = useGLTF("/1nrtbod1.glb");
+    const {nodes, materials, animations} = useGLTF(
+        "/Naruto-Storm-2-DEMO/1nrtbod1.glb"
+    );
     const {actions, names} = useAnimations(animations, group);
 
     useEffect(() => {
@@ -139,6 +141,6 @@ function NarutoPTS(props) {
     );
 }
 
-useGLTF.preload("/1nrtbod1.glb");
+useGLTF.preload("/Naruto-Storm-2-DEMO/1nrtbod1.glb");
 
 export default NarutoPTS;
