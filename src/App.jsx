@@ -13,6 +13,8 @@ import OpeningIntro from "./react_components/OpeningIntro.jsx";
 import TitleScreen from "./react_components/TitleScreen.jsx";
 import PracticeBattleComp from "./react_components/PracticeBattle.jsx";
 
+import LoadingScreen2 from "./react_components/LoadingScreen2.jsx";
+
 function App() {
     const gameSceneArr = [
         <GameBootScreen />,
@@ -79,6 +81,8 @@ function App() {
             case 5:
                 if (gameSceneTracker === 6) {
                     setGameState((prevState) => prevState + 1);
+                } else {
+                    loadingScreen2();
                 }
                 break;
             case 6:
@@ -92,6 +96,8 @@ function App() {
                 break;
         }
     }, [gameSceneTracker]);
+
+    useEffect(() => console.log(sceneSkipStateStore), [sceneSkipStateStore]);
 
     useEffect(() => {
         if (sceneSkipStateStore) {
@@ -114,7 +120,12 @@ function App() {
         }
     }, [quitGameStateStore]);
 
-    return <>{gameSceneArr[gameStateArr]}</>;
+    return (
+        <>
+            {gameSceneArr[gameStateArr]}
+            {gameStateArr === 5 && <LoadingScreen2 />}
+        </>
+    );
 }
 
 export default App;

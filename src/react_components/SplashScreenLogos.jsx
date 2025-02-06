@@ -77,3 +77,4 @@ function SplashScreenLogos() {
 }
 
 export default SplashScreenLogos;
+export {bng, cc2, criware};

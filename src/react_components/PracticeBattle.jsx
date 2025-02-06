@@ -151,3 +151,5 @@ function PracticeBattleComp() {
 }
 
 export default PracticeBattleComp;
+
+export {m_key, mouse_left, mouse_right, mouse_wheel};

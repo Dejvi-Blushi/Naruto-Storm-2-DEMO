@@ -2,11 +2,30 @@ import React, {useState, useEffect} from "react";
 
 import "./LoadingScreen.css";
 
+import {enter_key, w_key, s_key} from "./GameLanguageOption.jsx";
+import key_bar from "../assets/key_window/key_bar.png";
+
+import select_bar from "../assets/language_option/select_bar_effect.png";
+import background_img from "../assets/language_option/language_option.png";
+
+import {bng, cc2, criware} from "./SplashScreenLogos.jsx";
+
 import {useSceneSkipStateStore} from "../zustand/GameStateStore.jsx";
 
 function LoadingScreen() {
     const [percentage, setPercentage] = useState(0);
     const [isLoaded, setIsLoaded] = useState(false);
+
+    const preloadLangOption = [
+        enter_key,
+        w_key,
+        s_key,
+        key_bar,
+        select_bar,
+        background_img,
+    ];
+
+    const preloadSplashScreen = [bng, cc2, criware];
 
     const setSceneSkipStateTrue = useSceneSkipStateStore(
         (state) => state.setSceneSkipStateTrue
@@ -41,6 +60,28 @@ function LoadingScreen() {
             return () => clearTimeout(timeoutId);
         }
     }, [isLoaded]);
+
+    const CacheTextures = (src) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => resolve();
+            img.onerror = (error) =>
+                reject(window.alert("Image failed to load:", error));
+        });
+    };
+
+    useEffect(() => {
+        Promise.all(
+            preloadLangOption.map((image) => CacheTextures(image))
+        ).catch((error) => console.error("Error preloading images:", error));
+    }, []);
+
+    useEffect(() => {
+        Promise.all(
+            preloadSplashScreen.map((image) => CacheTextures(image))
+        ).catch((error) => console.error("Error preloading images:", error));
+    }, []);
 
     const percentageFormat = (num) => {
         const percentageSpaced = num.toString().split("").join(" ");

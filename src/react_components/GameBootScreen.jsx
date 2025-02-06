@@ -1,6 +1,4 @@
-import {useEffect} from "react";
-
-import "./GameBootScreen.css";
+import {useEffect, useState} from "react";
 
 import game_boot_screen from "../assets/game_boot_screen/game_boot_screen.png";
 
@@ -11,20 +9,38 @@ function GameBootScreen() {
         (state) => state.setSceneSkipStateTrue
     );
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            setSceneSkipStateTrue();
-        }, 2500);
+    const [isLoading, setIsLoading] = useState(true);
 
-        return () => clearTimeout(timeoutId);
+    const preloadImage = game_boot_screen;
+
+    const cacheImage = async (src) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => resolve();
+            img.onerror = (error) => {
+                reject(window.alert("Image failed to load:", error));
+            };
+        });
+    };
+
+    useEffect(() => {
+        cacheImage(preloadImage).then(() => setIsLoading(false));
     }, []);
 
-    return (
-        <img
-            className="game-boot-screen1"
-            src={game_boot_screen}
-            draggable="false"
-        ></img>
-    );
+    useEffect(() => {
+        if (!isLoading) {
+            setTimeout(() => {
+                setSceneSkipStateTrue();
+            }, 2500);
+        }
+    }, [isLoading]);
+
+    if (isLoading) {
+        return <></>;
+    }
+
+    return <img src={preloadImage} draggable="false" />;
 }
+
 export default GameBootScreen;

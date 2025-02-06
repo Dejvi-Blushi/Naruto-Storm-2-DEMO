@@ -16,9 +16,15 @@ import title_diamond from "../assets/title_screen/title_diamond.png";
 import title_panel from "../assets/title_screen/title_panel.png";
 import title_copyright from "../assets/title_screen/title_copyright.png";
 import back_key from "../assets/key_window/back_key.png";
-import enter_key from "../assets/key_window/enter_key.png";
-import w_key from "../assets/key_window/w_key.png";
-import s_key from "../assets/key_window/s_key.png";
+
+import {w_key, s_key, enter_key} from "./GameLanguageOption.jsx";
+
+import {
+    m_key,
+    mouse_left,
+    mouse_right,
+    mouse_wheel,
+} from "./PracticeBattle.jsx";
 
 import menu_mode_select from "../assets/sfx/menu_mode_select.wav";
 import menu_cancel from "../assets/sfx/menu_cancel.wav";
@@ -30,6 +36,8 @@ import title_bgm1 from "../assets/bgm/title_bgm1.wav";
 import title_bgm2 from "../assets/bgm/title_bgm2.wav";
 
 function TitleScreen() {
+    const preloadPracticeBattle = [m_key, mouse_left, mouse_right, mouse_wheel];
+
     const [anyKeyPressed, setAnyKeyPressed] = useState(false);
     const [enterKeyPressed, setEnterKeyPressed] = useState(false);
     const [backKeyPressed, setBackKeyPressed] = useState(false);
@@ -216,6 +224,26 @@ function TitleScreen() {
     useEffect(() => {
         titleBgm2Ref.current.volume = 0;
     }, []);
+
+    const CacheTextures = (src) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => resolve();
+            img.onerror = (error) =>
+                reject(window.alert("Image failed to load:", error));
+        });
+    };
+
+    useEffect(() => {
+        if (enterKeyPressed) {
+            Promise.all(
+                preloadPracticeBattle.map((image) => CacheTextures(image))
+            ).catch((error) =>
+                console.error("Error preloading images:", error)
+            );
+        }
+    }, [enterKeyPressed]);
 
     return (
         <>
@@ -407,3 +435,5 @@ function TitleScreen() {
 }
 
 export default TitleScreen;
+
+export {back_key, title_logo, title_diamond, title_panel, title_copyright};
