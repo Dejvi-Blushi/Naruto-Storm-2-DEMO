@@ -81,8 +81,6 @@ function App() {
             case 5:
                 if (gameSceneTracker === 6) {
                     setGameState((prevState) => prevState + 1);
-                } else {
-                    loadingScreen2();
                 }
                 break;
             case 6:
@@ -96,8 +94,6 @@ function App() {
                 break;
         }
     }, [gameSceneTracker]);
-
-    useEffect(() => console.log(sceneSkipStateStore), [sceneSkipStateStore]);
 
     useEffect(() => {
         if (sceneSkipStateStore) {
