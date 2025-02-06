@@ -64,3 +64,5 @@ function OpeningIntro() {
 }
 
 export default OpeningIntro;
+
+export {opening, opening_bgm, opening_en, opening_jp};

@@ -17,19 +17,24 @@ import title_panel from "../assets/title_screen/title_panel.png";
 import title_copyright from "../assets/title_screen/title_copyright.png";
 import back_key from "../assets/key_window/back_key.png";
 
-import {w_key, s_key, enter_key} from "./GameLanguageOption.jsx";
+import {
+    w_key,
+    s_key,
+    enter_key,
+    menu_option,
+    menu_option_select,
+} from "./GameLanguageOption.jsx";
 
 import {
     m_key,
     mouse_left,
     mouse_right,
     mouse_wheel,
+    practice_bgm,
 } from "./PracticeBattle.jsx";
 
 import menu_mode_select from "../assets/sfx/menu_mode_select.wav";
 import menu_cancel from "../assets/sfx/menu_cancel.wav";
-import menu_option from "../assets/sfx/menu_option.wav";
-import menu_option_select from "../assets/sfx/menu_option_select.wav";
 import menu_window_popup from "../assets/sfx/menu_window_popup.wav";
 
 import title_bgm1 from "../assets/bgm/title_bgm1.wav";
@@ -55,6 +60,8 @@ function TitleScreen() {
     const menuWindowPopoutSfxRef = useRef(null);
 
     const isSelectBarSpawned = useRef(false);
+
+    const practiceBgm = practice_bgm;
 
     const setSkipToIntroStateTrue = useSkipToIntroStateStore(
         (state) => state.setSkipToIntroStateTrue
@@ -235,13 +242,25 @@ function TitleScreen() {
         });
     };
 
+    const CacheAudio = (src) => {
+        return new Promise((resolve, reject) => {
+            const audio = new Audio();
+            audio.src = src;
+            audio.onload = () => resolve();
+            audio.onerror = (error) =>
+                reject(window.alert("Audio failed to load:", error));
+        });
+    };
+
     useEffect(() => {
         if (enterKeyPressed) {
             Promise.all(
                 preloadPracticeBattle.map((image) => CacheTextures(image))
             ).catch((error) =>
-                console.error("Error preloading images:", error)
+                console.error("Error preloading texture files:", error)
             );
+
+            CacheAudio(practiceBgm);
         }
     }, [enterKeyPressed]);
 
@@ -437,3 +456,11 @@ function TitleScreen() {
 export default TitleScreen;
 
 export {back_key, title_logo, title_diamond, title_panel, title_copyright};
+
+export {
+    menu_mode_select,
+    menu_cancel,
+    menu_window_popup,
+    title_bgm1,
+    title_bgm2,
+};

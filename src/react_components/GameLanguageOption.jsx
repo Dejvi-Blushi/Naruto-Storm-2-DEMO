@@ -179,4 +179,4 @@ function GameLanguageOption() {
     );
 }
 export default GameLanguageOption;
-export {enter_key, w_key, s_key};
+export {enter_key, w_key, s_key, menu_option, menu_option_select};
